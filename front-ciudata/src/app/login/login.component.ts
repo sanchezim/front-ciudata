@@ -3,6 +3,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { AuthenticationService, TokenPayload } from '../services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,19 +16,25 @@ export class LoginComponent implements OnInit {
   public activeLang = 'es';
   loginForm!: FormGroup;
   submitted = false;
+  credentials: TokenPayload = {
+    email: '',
+    password: ''
+  }
 
   @BlockUI() blockUI!: NgBlockUI;
   constructor(@Inject(DOCUMENT) private document: Document,
     private translate: TranslateService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private auth: AuthenticationService,
+    private router: Router) {
     this.translate.setDefaultLang(this.activeLang);
   }
 
   ngOnInit(): void {
     this.document.body.style.background = '#000';
     this.loginForm = this.formBuilder.group({
-      usuario: ['', [Validators.required]],
-      contrasena: ['', [Validators.required]]
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
   }
 
@@ -37,6 +45,15 @@ export class LoginComponent implements OnInit {
       this.blockUI.stop();
       return;
     }
+    this.auth.login(this.credentials).subscribe(
+      () => {
+        this.blockUI.stop();
+        this.router.navigateByUrl('/roles-permisos');
+      },
+      err => {
+        console.error(err);
+      }
+    )
   }
 
   public cambiarLenguaje(lang: string) {

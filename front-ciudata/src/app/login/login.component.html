@@ -55,14 +55,14 @@
             <div class="row login-form">
                 <div class="col-xl-6 offset-xl-3" align="center">
                     <p class="txtLogin">{{ 'login.usuario' | translate }}:</p>
-                    <input class="inputLogin" type="text" id="inputUsuario" name="usuario" formControlName="usuario">
-                    <div *ngIf="submitted && f.usuario.errors" class="invalid-feedback d-block">
-                        <div *ngIf="f.usuario.errors.required">{{ 'campoRequerido' | translate }}</div>
+                    <input class="inputLogin" type="text" id="inputEmail" name="email" formControlName="email" [(ngModel)]="credentials.email">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback d-block">
+                        <div *ngIf="f.email.errors.required">{{ 'campoRequerido' | translate }}</div>
                     </div>
                     <p class="txtLogin mt-3">{{ 'login.contrasena' | translate }}:</p>
-                    <input class="inputLogin" type="password" id="inputContrasena" name="contrasena" formControlName="contrasena"><br>
-                    <div *ngIf="submitted && f.contrasena.errors" class="invalid-feedback d-block">
-                        <div *ngIf="f.contrasena.errors.required">{{ 'campoRequerido' | translate }}</div>
+                    <input class="inputLogin" type="password" id="inputPassword" name="password" formControlName="password" [(ngModel)]="credentials.password"><br>
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback d-block">
+                        <div *ngIf="f.password.errors.required">{{ 'campoRequerido' | translate }}</div>
                     </div>
                     <a routerLink="/recupera-contrasena" class="olvidasteTxt" href="#"><i class="fas fa-key">&nbsp;</i>{{ 'login.olvidaste' | translate }}</a><br><br><br>
                     <button type="button" class="btn btn-primary active btn-login" type="submit">{{ 'login.iniciar' | translate }}</button>

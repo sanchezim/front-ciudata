@@ -9,6 +9,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RecuperaContrasenaComponent } from './recupera-contrasena/recupera-contrasena.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlockUIModule } from 'ng-block-ui';
+import { AuthenticationService } from './services/authentication.service';
+import { RolesPermisosComponent } from './roles-permisos/roles-permisos.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, "./assets/i18n/", ".json");
@@ -18,7 +21,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   declarations: [
     AppComponent,
     LoginComponent,
-    RecuperaContrasenaComponent
+    RecuperaContrasenaComponent,
+    RolesPermisosComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       }
     })
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
