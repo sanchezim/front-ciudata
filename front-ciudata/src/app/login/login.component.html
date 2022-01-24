@@ -1,0 +1,73 @@
+<block-ui>
+    <div id="body">
+        <div class="col-xl-2 offset-xl-1 mt-3">
+            <div class="dropdown">
+                <a class="btn btn-info dropdown-toggle btn-idioma" href="#" role="button" id="dropdownMenuLink"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ 'login.idioma' | translate }}
+                </a>
+    
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a style="cursor: pointer;" class="dropdown-item" (click)="cambiarLenguaje('es')">Español</a></li>
+                    <li><a style="cursor: pointer;" class="dropdown-item" (click)="cambiarLenguaje('en')">Inglés</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xl-6 offset-xl-3 mt-3" align="center">
+            <img src="../../assets/img/ciudata-black.jpeg" class="img-fluid">
+        </div>
+        <div id="wrap">
+            <div id="main" class="container clear-top">
+                <footer class="footer-dark">
+                    <div class="container">
+                        <div class="row mt-auto mb-3">
+                            <div class="col-sm-12">
+                                <hr class="line">
+                            </div>
+                            <div class="col-sm item">
+                                <ul>
+                                    <li style="text-align: center;"><a href="#">{{ 'login.legal' | translate }}</a></li>
+                                    <li style="text-align: center;"><a href="#">@ Copyrigth</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm item">
+                                <ul>
+                                    <li style="text-align: center;"><a href="#">{{ 'login.contacto' | translate }}</a></li>
+                                    <li style="text-align: center;"><a href="#">correoempresarial@dominio.com</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm item">
+                                <ul>
+                                    <li style="text-align: center;"><a href="#">{{ 'login.redes' | translate }}</a></li>
+                                    <li style="text-align: center;"><a href="#"><i class="fab fa-facebook-square"></i></a><a
+                                            href="#"><i style="margin-left: 10px;" class="fab fa-twitter-square"></i></a><a
+                                            href="#"><i style="margin-left: 10px;" class="fab fa-youtube-square"></i></a><a
+                                            href="#"><i style="margin-left: 10px;" class="fab fa-instagram-square"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <form [formGroup]="loginForm" (submit)="login()" class="form-signin">
+            <div class="row login-form">
+                <div class="col-xl-6 offset-xl-3" align="center">
+                    <p class="txtLogin">{{ 'login.usuario' | translate }}:</p>
+                    <input class="inputLogin" type="text" id="inputUsuario" name="usuario" formControlName="usuario">
+                    <div *ngIf="submitted && f.usuario.errors" class="invalid-feedback d-block">
+                        <div *ngIf="f.usuario.errors.required">{{ 'campoRequerido' | translate }}</div>
+                    </div>
+                    <p class="txtLogin mt-3">{{ 'login.contrasena' | translate }}:</p>
+                    <input class="inputLogin" type="password" id="inputContrasena" name="contrasena" formControlName="contrasena"><br>
+                    <div *ngIf="submitted && f.contrasena.errors" class="invalid-feedback d-block">
+                        <div *ngIf="f.contrasena.errors.required">{{ 'campoRequerido' | translate }}</div>
+                    </div>
+                    <a routerLink="/recupera-contrasena" class="olvidasteTxt" href="#"><i class="fas fa-key">&nbsp;</i>{{ 'login.olvidaste' | translate }}</a><br><br><br>
+                    <button type="button" class="btn btn-primary active btn-login" type="submit">{{ 'login.iniciar' | translate }}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</block-ui>

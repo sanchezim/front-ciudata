@@ -1,0 +1,21 @@
+{
+    "campoRequerido": "Required field",
+    "login": {
+        "idioma":"Language",
+        "usuario":"User",
+        "contrasena":"Password",
+        "olvidaste":"Forgot your password?",
+        "iniciar":"Login",
+        "legal":"Legal warning",
+        "contacto":"Contact",
+        "redes":"Social networks"
+    },
+    "recuperacion": {
+        "titulo":"RECOVERY OF PASSWORD",
+        "parrafoUno":"Enter de email address you used to register.",
+        "parrafoDos":"We send you a message with your username and a link to reset your password.",
+        "parrafoTres":"Email or username",
+        "parrafoCuatro":"An email has been sent with instructions on how to reset your password.",
+        "enviar":"Send"
+    }
+}

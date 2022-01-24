@@ -1,0 +1,21 @@
+{
+    "campoRequerido": "Campo requerido ",
+    "login": {
+        "idioma":"Idioma",
+        "usuario":"Usuario",
+        "contrasena":"Contraseña",
+        "olvidaste":"¿Olvidaste tu contraseña?",
+        "iniciar":"Iniciar Sesión",
+        "legal":"Aviso legal",
+        "contacto":"Contacto",
+        "redes":"Redes sociales"
+    },
+    "recuperacion": {
+        "titulo":"RECUPERACIÓN DE CONTRASEÑA",
+        "parrafoUno":"Ingresa la dirección de correo electrónico que usaste para registrarte.",
+        "parrafoDos":"Te enviaremos un mensaje con tu nombre de usuario y un enlace para restablecer tu contraseña.",
+        "parrafoTres":"Dirección de correo electrónico o nombre de usuario",
+        "parrafoCuatro":"Se te ha enviado un mensaje por correo electrónico con instrucciones sobre como restablecer su contraseña.",
+        "enviar":"Enviar"
+    }
+}
