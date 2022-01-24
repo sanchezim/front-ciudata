@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -124,11 +124,19 @@ export class AuthenticationService {
     })
   }
 
+  getHttpHeaders() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.getToken()}`
+      })
+    };
+    return httpOptions;
+  }
+
   public logout(): void {
     this.token = ''
     window.localStorage.removeItem('usertoken')
-    this.router.navigateByUrl('/login').then(() => {
-      window.location.reload();
-  });
+    this.router.navigateByUrl('/login')
   }
 }
