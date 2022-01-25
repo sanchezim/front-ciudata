@@ -9,13 +9,7 @@ export const environment = {
 
   URI_LOGIN: '/login',
 
-  URI_REGISTRO: '/users/register',
-
-  URI_PROFILE: '/users/profile',
-
-  URI_RECUPERA: '/users/recupera',
-
-  URI_CONTACTO_BUZON: '/contacto/buzon'
+  URI_RECUPERA: '/forgot/password'
 };
 
 /*

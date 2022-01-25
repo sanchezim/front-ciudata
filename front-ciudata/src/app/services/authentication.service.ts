@@ -52,10 +52,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private router: Router) {
     this.apiUrl = environment.apiUrl;
     this.urlLogin = this.apiUrl + environment.URI_LOGIN;
-    this.urlRegistro = this.apiUrl + environment.URI_REGISTRO;
-    this.urlProfile = this.apiUrl + environment.URI_PROFILE;
     this.urlRecupera = this.apiUrl + environment.URI_RECUPERA;
-    this.urlContacto = this.apiUrl + environment.URI_CONTACTO_BUZON;
   }
 
   private saveToken(token: string): void {
@@ -91,14 +88,6 @@ export class AuthenticationService {
     }
   }
 
-  public register(user: Register): Observable<any> {
-    return this.http.post(this.urlRegistro, user)
-  }
-
-  public contacto(contacto: Contacto): Observable<any> {
-    return this.http.post(this.urlContacto, contacto)
-  }
-
   public recupera(user: TokenPayload): Observable<any> {
     return this.http.post(this.urlRecupera, user)
   }
@@ -116,12 +105,6 @@ export class AuthenticationService {
     )
 
     return request
-  }
-
-  public profile(): Observable<any> {
-    return this.http.get(this.urlProfile, {
-      headers: { Authorization: ` ${this.getToken()}` }
-    })
   }
 
   getHttpHeaders() {
