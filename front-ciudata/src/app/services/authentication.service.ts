@@ -15,28 +15,9 @@ export interface UserDetails {
   exp: number;
 }
 
-interface TokenResponse {
-  token: string;
-}
-
 export interface TokenPayload {
   email: string;
   password: string;
-}
-
-export interface Register {
-  id: number;
-  correo: string;
-  nombre: string;
-  apellidos: string;
-  contrasena: string;
-  id_perfil: number;
-}
-
-export interface Contacto {
-  correo: string;
-  nombre: string;
-  mensaje: string;
 }
 
 @Injectable()
@@ -44,15 +25,18 @@ export class AuthenticationService {
   private token: string;
   urlLogin: string;
   apiUrl: string;
-  urlRegistro: string;
-  urlProfile: string;
   urlRecupera: string;
-  urlContacto: string;
+  urlValidarLogin: string;
+  estaLogueado = false;
 
   constructor(private http: HttpClient, private router: Router) {
     this.apiUrl = environment.apiUrl;
-    this.urlLogin = this.apiUrl + environment.URI_LOGIN;
+    this.urlLogin = environment.URI_LOGIN;
+    this.urlRecupera = environment.URI_RECUPERA;
+    this.urlValidarLogin = environment.URI_VALIDAR_LOGIN;
+    /*this.urlLogin = this.apiUrl + environment.URI_LOGIN;
     this.urlRecupera = this.apiUrl + environment.URI_RECUPERA;
+    this.urlValidarLogin = this.apiUrl + environment.URI_VALIDAR_LOGIN;*/
   }
 
   private saveToken(token: string): void {
@@ -79,13 +63,8 @@ export class AuthenticationService {
     }
   }
 
-  public isLoggedIn(): boolean {
-    const user = this.getUserDetails()
-    if (user) {
-      return user.exp > Date.now() / 1000
-    } else {
-      return false
-    }
+  public isLoggedIn(): Observable<any> {
+    return this.http.get(this.urlValidarLogin, this.getHttpHeaders());
   }
 
   public recupera(user: TokenPayload): Observable<any> {
@@ -93,7 +72,7 @@ export class AuthenticationService {
   }
 
   public login(user: TokenPayload): Observable<any> {
-    const base = this.http.post(this.urlLogin, user) 
+    const base = this.http.post(this.urlLogin, user)
 
     const request = base.pipe(
       map((data: any) => {
@@ -108,6 +87,7 @@ export class AuthenticationService {
   }
 
   getHttpHeaders() {
+    console.log(this.getToken())
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
