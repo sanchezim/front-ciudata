@@ -6,6 +6,7 @@ import { RolesPermisosComponent } from './roles-permisos/roles-permisos.componen
 import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: "login", component: LoginComponent },
   { path: "recupera-contrasena", component: RecuperaContrasenaComponent },
   { path: "roles-permisos", component: RolesPermisosComponent, canActivate: [AuthGuardService] },
