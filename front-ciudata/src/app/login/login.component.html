@@ -67,6 +67,9 @@
                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback d-block">
                         <div *ngIf="f.password.errors.required">{{ 'campoRequerido' | translate }}</div>
                     </div>
+                    <div *ngIf="error" class="invalid-feedback d-block">
+                        <div>{{ errorLogin }}</div>
+                    </div>
                     <a routerLink="/recupera-contrasena" class="olvidasteTxt" href="#"><i class="fas fa-key">&nbsp;</i>{{ 'login.olvidaste' | translate }}</a><br><br><br>
                     <button type="button" class="btn btn-primary active btn-login" type="submit">{{ 'login.iniciar' | translate }}</button>
                 </div>

@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
     email: '',
     password: ''
   }
+  errorLogin: string = '';
+  error = false;
 
   @BlockUI() blockUI!: NgBlockUI;
   constructor(@Inject(DOCUMENT) private document: Document,
@@ -45,10 +47,14 @@ export class LoginComponent implements OnInit {
       this.blockUI.stop();
       return;
     }
-    this.auth.login(this.credentials).subscribe(
-      () => {
+    this.auth.login(this.credentials).subscribe((data: any) => {
         this.blockUI.stop();
-        this.router.navigateByUrl('/roles-permisos');
+        if (data.errors) {
+          this.error = true;
+          this.errorLogin = data.message;
+        } else {
+          this.router.navigateByUrl('/roles-permisos');
+        }
       },
       err => {
         this.blockUI.stop();
