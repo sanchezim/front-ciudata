@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/roles-permisos');
       },
       err => {
+        this.blockUI.stop();
         console.error(err);
       }
     )
