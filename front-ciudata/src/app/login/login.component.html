@@ -59,6 +59,9 @@
                     <div *ngIf="submitted && f.email.errors" class="invalid-feedback d-block">
                         <div *ngIf="f.email.errors.required">{{ 'campoRequerido' | translate }}</div>
                     </div>
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback d-block">
+                        <div *ngIf="f.email.errors.pattern">{{ 'validaCorreo' | translate }}</div>
+                    </div>
                     <p class="txtLogin mt-3">{{ 'login.contrasena' | translate }}:</p>
                     <input class="inputLogin" type="password" id="inputPassword" name="password" formControlName="password" [(ngModel)]="credentials.password"><br>
                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback d-block">

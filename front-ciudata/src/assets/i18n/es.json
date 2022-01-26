@@ -1,5 +1,6 @@
 {
     "campoRequerido": "Campo requerido ",
+    "validaCorreo": "Correo inválido",
     "login": {
         "idioma":"Idioma",
         "usuario":"Usuario",

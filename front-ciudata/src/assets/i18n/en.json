@@ -1,5 +1,6 @@
 {
     "campoRequerido": "Required field",
+    "validaCorreo": "Invalid email",
     "login": {
         "idioma":"Language",
         "usuario":"User",
