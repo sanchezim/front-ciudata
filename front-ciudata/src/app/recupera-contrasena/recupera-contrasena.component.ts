@@ -32,7 +32,7 @@ export class RecuperaContrasenaComponent implements OnInit {
   ngOnInit(): void {
     this.document.body.style.background = '#000';
     this.recuperaForm = this.formBuilder.group({
-      email: ['', [Validators.required]]
+      email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]]
     });
   }
 

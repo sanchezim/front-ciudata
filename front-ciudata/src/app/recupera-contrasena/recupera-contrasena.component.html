@@ -63,6 +63,9 @@
                     <div *ngIf="submitted && f.email.errors" class="invalid-feedback d-block">
                         <div *ngIf="f.email.errors.required">{{ 'campoRequerido' | translate }}</div>
                     </div>
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback d-block">
+                        <div *ngIf="f.email.errors.pattern">{{ 'validaCorreo' | translate }}</div>
+                    </div>
                     <button type="button" class="btn btn-primary active btn-login mt-3" type="submit">{{ 'recuperacion.enviar' | translate }}</button>
                 </div>
             </div>
