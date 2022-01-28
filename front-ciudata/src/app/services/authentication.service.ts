@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { TranslateService } from '@ngx-translate/core';
 
 export interface UserDetails {
   id: number;
@@ -29,7 +30,9 @@ export class AuthenticationService {
   urlValidarLogin: string;
   estaLogueado = false;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, 
+    private router: Router,
+    private translate: TranslateService) {
     this.apiUrl = environment.apiUrl;
     this.urlLogin = environment.URI_LOGIN;
     this.urlRecupera = environment.URI_RECUPERA;
@@ -68,11 +71,11 @@ export class AuthenticationService {
   }
 
   public recupera(user: TokenPayload): Observable<any> {
-    return this.http.post(this.urlRecupera, user)
+    return this.http.post(this.urlRecupera, user, this.getHttpHeadersNoAuth())
   }
 
   public login(user: TokenPayload): Observable<any> {
-    const base = this.http.post(this.urlLogin, user)
+    const base = this.http.post(this.urlLogin, user, this.getHttpHeadersNoAuth());
 
     const request = base.pipe(
       map((data: any) => {
@@ -87,11 +90,33 @@ export class AuthenticationService {
   }
 
   getHttpHeaders() {
-    console.log(this.getToken())
+    var lenguaje = '';
+    if (this.translate.currentLang === undefined) {
+      lenguaje = 'es';
+    } else {
+      lenguaje = this.translate.currentLang;
+    }
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.getToken()}`
+        'Authorization': `Bearer ${this.getToken()}`,
+        'Accept-Language': lenguaje
+      })
+    };
+    return httpOptions;
+  }
+
+  getHttpHeadersNoAuth() {
+    var lenguaje = '';
+    if (this.translate.currentLang === undefined) {
+      lenguaje = 'es';
+    } else {
+      lenguaje = this.translate.currentLang;
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Accept-Language': lenguaje
       })
     };
     return httpOptions;

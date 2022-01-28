@@ -49,15 +49,17 @@ export class LoginComponent implements OnInit {
     }
     this.auth.login(this.credentials).subscribe((data: any) => {
         this.blockUI.stop();
-        if (data.errors) {
-          this.error = true;
-          this.errorLogin = data.message;
-        } else {
-          this.router.navigateByUrl('/roles-permisos');
-        }
+        this.router.navigateByUrl('/roles-permisos');
       },
       err => {
         this.blockUI.stop();
+        this.error = true;
+        if (err.error.errors.email) {
+          this.errorLogin = err.error.errors.email[0];
+        }
+        if (err.error.errors.password) {
+          this.errorLogin = err.error.errors.password[0];
+        }
         console.error(err);
       }
     )
