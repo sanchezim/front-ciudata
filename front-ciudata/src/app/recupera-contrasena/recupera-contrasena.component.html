@@ -1,4 +1,4 @@
-<block-ui>
+<!--<block-ui>
     <div id="body">
         <div class="col-xl-2 offset-xl-1 mt-3">
             <div class="dropdown">
@@ -6,15 +6,18 @@
                     data-bs-toggle="dropdown" aria-expanded="false">
                     {{ 'login.idioma' | translate }}
                 </a>
-    
+
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a style="cursor: pointer;" class="dropdown-item" (click)="cambiarLenguaje('es')">Español</a></li>
-                    <li><a style="cursor: pointer;" class="dropdown-item" (click)="cambiarLenguaje('en')">Inglés</a></li>
+                    <li><a style="cursor: pointer;" class="dropdown-item" (click)="cambiarLenguaje('es')">Español</a>
+                    </li>
+                    <li><a style="cursor: pointer;" class="dropdown-item" (click)="cambiarLenguaje('en')">Inglés</a>
+                    </li>
                 </ul>
             </div>
         </div>
         <div class="col-xl-6 offset-xl-3 mt-3" align="center">
-            <img src="../../assets/img/ciudata-black.jpeg" routerLink="/login" class="img-fluid" style="cursor: pointer;">
+            <img src="../../assets/img/ciudata-black.jpeg" routerLink="/login" class="img-fluid"
+                style="cursor: pointer;">
         </div>
         <div id="wrap">
             <div id="main" class="container clear-top">
@@ -32,17 +35,20 @@
                             </div>
                             <div class="col-sm item">
                                 <ul>
-                                    <li style="text-align: center;"><a href="#">{{ 'login.contacto' | translate }}</a></li>
+                                    <li style="text-align: center;"><a href="#">{{ 'login.contacto' | translate }}</a>
+                                    </li>
                                     <li style="text-align: center;"><a href="#">correoempresarial@dominio.com</a></li>
                                 </ul>
                             </div>
                             <div class="col-sm item">
                                 <ul>
                                     <li style="text-align: center;"><a href="#">{{ 'login.redes' | translate }}</a></li>
-                                    <li style="text-align: center;"><a href="#"><i class="fab fa-facebook-square"></i></a><a
-                                            href="#"><i style="margin-left: 10px;" class="fab fa-twitter-square"></i></a><a
-                                            href="#"><i style="margin-left: 10px;" class="fab fa-youtube-square"></i></a><a
-                                            href="#"><i style="margin-left: 10px;" class="fab fa-instagram-square"></i></a>
+                                    <li style="text-align: center;"><a href="#"><i
+                                                class="fab fa-facebook-square"></i></a><a href="#"><i
+                                                style="margin-left: 10px;" class="fab fa-twitter-square"></i></a><a
+                                            href="#"><i style="margin-left: 10px;"
+                                                class="fab fa-youtube-square"></i></a><a href="#"><i
+                                                style="margin-left: 10px;" class="fab fa-instagram-square"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -59,14 +65,16 @@
                         {{ 'recuperacion.parrafoDos' | translate }}</p>
                     <br><br>
                     <p class="texto">{{ 'recuperacion.parrafoTres' | translate }}</p>
-                    <input class="inputRecupera" type="text" name="email" formControlName="email" [(ngModel)]="credentials.email"><br>
+                    <input class="inputRecupera" type="text" name="email" formControlName="email"
+                        [(ngModel)]="credentials.email"><br>
                     <div *ngIf="submitted && f.email.errors" class="invalid-feedback d-block">
                         <div *ngIf="f.email.errors.required">{{ 'campoRequerido' | translate }}</div>
                     </div>
                     <div *ngIf="submitted && f.email.errors" class="invalid-feedback d-block">
                         <div *ngIf="f.email.errors.pattern">{{ 'validaCorreo' | translate }}</div>
                     </div>
-                    <button type="button" class="btn btn-primary active btn-login mt-3" type="submit">{{ 'recuperacion.enviar' | translate }}</button>
+                    <button type="button" class="btn btn-primary active btn-login mt-3" type="submit">{{
+                        'recuperacion.enviar' | translate }}</button>
                 </div>
             </div>
         </form>
@@ -74,6 +82,104 @@
             <div class="col-xl-6 offset-xl-3" align="center">
                 <h3 class="encabezado">{{ 'recuperacion.titulo' | translate }}</h3><br>
                 <p class="texto">{{ 'recuperacion.parrafoCuatro' | translate }}</p>
+            </div>
+        </div>
+    </div>
+</block-ui>-->
+
+<block-ui>
+    <div class="container-fluid dark_container m-0 p-0">
+        <div class="row">
+            <div class="dropdown" (click)="showDropdown()" [ngClass]="{'show': toggleFlag}">
+                <button *ngIf=" es" class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Es
+                </button>
+                <button *ngIf="!es" class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    En
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" [ngClass]="{'show': toggleFlag}">
+                    <a class="dropdown-item" (click)="cambiarLenguaje('en')">En</a>
+                    <a class="dropdown-item" (click)="cambiarLenguaje('es')">Es</a>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center m-0 p-0">
+            <div class="col-md-4">
+                <div class="logo"><img routerLink="/login" style="cursor: pointer;" src="../../assets/img/logo1.svg"></div>
+                <div class="row m-b-b">
+                    <h2 class="text-center white">{{ 'recuperacion.titulo' | translate }}</h2>
+                </div>
+                <div class="row mt-4 mb-4">
+                    <p *ngIf="!envioRecuperacion" class="white text-center">{{ 'recuperacion.parrafoUno' | translate }}
+                        {{ 'recuperacion.parrafoDos' | translate }}
+                    </p>
+                    <p *ngIf="envioRecuperacion" class="white text-center">{{ 'recuperacion.parrafoCuatro' | translate }}</p>
+                </div>
+                <form [formGroup]="recuperaForm" (submit)="recuperaContrasena()" class="row m-lg-t" *ngIf="!envioRecuperacion">
+                    <div class="row m-b-b">
+                        <label for="email" class="label_login text-center">{{ 'recuperacion.parrafoTres' | translate }}</label>
+                    </div>
+                    <div class="row m-b-b">
+                        <input type="email" value="" id="email" class="input_login" formControlName="email" [(ngModel)]="credentials.email">
+                    </div>
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback d-block" style="text-align: center;margin-top: -10px;">
+                        <div *ngIf="f.email.errors.required">{{ 'campoRequerido' | translate }}</div>
+                    </div>
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback d-block" style="text-align: center;margin-top: -10px;">
+                        <div *ngIf="f.email.errors.pattern">{{ 'validaCorreo' | translate }}</div>
+                    </div>
+                    <div class="row m-lg-t justify-content-center">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn">{{'recuperacion.enviar' | translate }}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center m-0 p-0">
+            <div class="col-md-12">
+                <footer class="desk">
+                    <hr>
+                    <div class="row mb-2">
+                        <div class="col-md-4 p-l-50">{{ 'login.legal' | translate }}</div>
+                        <div class="col-md-4 text-center">{{ 'login.contacto' | translate }}</div>
+                        <div class="col-md-4 p-redes"><u>{{ 'login.redes' | translate }}</u></div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-4 p-l-50"><u>@ Copyrigth</u></div>
+                        <div class="col-md-4 text-center"><a
+                                href="mailto:correoempresarial@dominio.com">correoempresarial@dominio.com</a></div>
+                        <div class="col-md-4 p-redes">
+                            <img src="../../assets/img/facebook.svg">
+                            <img src="../../assets/img/twitter.svg">
+                            <img src="../../assets/img/youtube.svg">
+                            <img src="../../assets/img/instagram.svg">
+                        </div>
+                    </div>
+                </footer>
+
+                <footer class="mobile">
+                    <hr>
+                    <div class="row mb-3 align-items-start">
+                        <div class="col text-center">{{ 'login.legal' | translate }}</div>
+                        <div class="col text-center"><u>@ Copyrigth</u></div>
+                    </div>
+                    <div class="row mb-3 align-items-start">
+                        <div class="col text-center">{{ 'login.contacto' | translate }}<br /><a
+                                href="mailto:correoempresarial@dominio.com">correoempresarial@dominio.com</a></div>
+                    </div>
+                    <div class="row mb-3 align-items-start">
+                        <div class="col text-center"><u>{{ 'login.redes' | translate }}</u></div>
+                        <div class="col text-center">
+                            <img src="../../assets/img/facebook.svg">
+                            <img src="../../assets/img/twitter.svg">
+                            <img src="../../assets/img/youtube.svg">
+                            <img src="../../assets/img/instagram.svg">
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
     </div>

@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
   }
   errorLogin: string = '';
   error = false;
+  toggleFlag = false;
+  es = true;
 
   @BlockUI() blockUI!: NgBlockUI;
   constructor(@Inject(DOCUMENT) private document: Document,
@@ -67,8 +69,15 @@ export class LoginComponent implements OnInit {
 
   public cambiarLenguaje(lang: string) {
     this.activeLang = lang;
+    if (this.activeLang === 'en') {
+      this.es = false;
+    } else {
+      this.es = true;
+    }
     this.translate.use(lang);
   }
 
   get f() { return this.loginForm.controls; }
+
+  showDropdown() { this.toggleFlag = !this.toggleFlag; }
 }

@@ -5,11 +5,13 @@
 export const environment = {
   production: false,
 
-  apiUrl: 'http://localhost:8090/api',
+  apiUrl: 'http://localhost:8090',
 
-  URI_LOGIN: '/login',
+  URI_LOGIN: '/api/login',
 
-  URI_RECUPERA: '/forgot/password'
+  URI_RECUPERA: '/api/forgot/password',
+
+  URI_VALIDAR_LOGIN: '/api/token/validate'
 };
 
 /*

@@ -1,4 +1,4 @@
-<block-ui>
+<!--<block-ui>
     <div id="body">
         <div class="col-xl-2 offset-xl-1 mt-3">
             <div class="dropdown">
@@ -75,5 +75,122 @@
                 </div>
             </div>
         </form>
+    </div>
+</block-ui>-->
+<block-ui>
+    <div class="container-fluid dark_container m-0 p-0">
+        <div class="row">
+            <div class="dropdown" (click)="showDropdown()" [ngClass]="{'show': toggleFlag}">
+                <button *ngIf="es" class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Es
+                </button>
+                <button *ngIf="!es" class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    En
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" [ngClass]="{'show': toggleFlag}">
+                    <a class="dropdown-item" (click)="cambiarLenguaje('en')">En</a>
+                    <a class="dropdown-item" (click)="cambiarLenguaje('es')">Es</a>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center m-0 p-0">
+            <div class="col-md-4">
+                <div class="logo"><img src="../../assets/img/logo1.svg"></div>
+                <form [formGroup]="loginForm" (submit)="login()" class="row m-0 p-0">
+                    <div class="row m-b-b">
+                        <label for="user" class="label_login text-center">{{ 'login.usuario' | translate }}:</label>
+                    </div>
+                    <div class="row m-b-b">
+                        <input type="text" id="user" class="input_login" formControlName="email"
+                            [(ngModel)]="credentials.email">
+                    </div>
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback d-block mb-3" style="text-align: center;margin-top: -10px;">
+                        <div *ngIf="f.email.errors.required">{{ 'campoRequerido' | translate }}</div>
+                    </div>
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback d-block mb-3" style="text-align: center;margin-top: -10px;">
+                        <div *ngIf="f.email.errors.pattern">{{ 'validaCorreo' | translate }}</div>
+                    </div>
+                    <div class="row m-b-b">
+                        <label for="pass" class="label_login text-center">{{ 'login.contrasena' | translate }}:</label>
+                    </div>
+                    <div class="row m-b-b">
+                        <input type="password" value="" id="pass" class="input_login" formControlName="password"
+                            [(ngModel)]="credentials.password">
+                    </div>
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback d-block mb-3" style="text-align: center;margin-top: -10px;">
+                        <div *ngIf="f.password.errors.required">{{ 'campoRequerido' | translate }}</div>
+                    </div>
+                    <div *ngIf="error" class="invalid-feedback d-block mb-3" style="text-align: center;margin-top: -10px;">
+                        <div>{{ errorLogin }}</div>
+                    </div>
+                    <div class="row m-lg-b p-0">
+                        <a routerLink="/recupera-contrasena" class="text-center m-0 p-0"><i class="fas fa-key"></i>{{
+                            'login.olvidaste' | translate }}</a>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn">{{ 'login.iniciar' | translate }}</button>
+                        </div>
+
+                        <!--boton ver modal <div class="col-md-12 m-5">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Launch demo modal
+              </button>
+            </div>-->
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row justify-content-center m-0 p-0">
+            <div class="col-md-12">
+                <footer class="desk">
+                    <hr>
+                    <div class="row mb-2">
+                        <div class="col-md-4 p-l-50">{{ 'login.legal' | translate }}</div>
+                        <div class="col-md-4 text-center">{{ 'login.contacto' | translate }}</div>
+                        <div class="col-md-4 p-redes"><u>{{ 'login.redes' | translate }}</u></div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-4 p-l-50"><u>@ Copyrigth</u></div>
+                        <div class="col-md-4 text-center"><a
+                                href="mailto:correoempresarial@dominio.com">correoempresarial@dominio.com</a></div>
+                        <div class="col-md-4 p-redes">
+                            <img src="../../assets/img/facebook.svg">
+                            <img src="../../assets/img/twitter.svg">
+                            <img src="../../assets/img/youtube.svg">
+                            <img src="../../assets/img/instagram.svg">
+                        </div>
+                    </div>
+                </footer>
+
+                <footer class="mobile">
+                    <hr>
+                    <div class="row mb-3 align-items-start">
+                        <div class="col text-center">{{ 'login.legal' | translate }}</div>
+                        <div class="col text-center"><u>@ Copyrigth</u></div>
+                    </div>
+                    <div class="row mb-3 align-items-start">
+                        <div class="col text-center">{{ 'login.contacto' | translate }}<br /><a
+                                href="mailto:correoempresarial@dominio.com">correoempresarial@dominio.com</a></div>
+                    </div>
+                    <div class="row mb-3 align-items-start">
+                        <div class="col text-center"><u>{{ 'login.redes' | translate }}</u></div>
+                        <div class="col text-center">
+                            <img src="../../assets/img/facebook.svg">
+                            <img src="../../assets/img/twitter.svg">
+                            <img src="../../assets/img/youtube.svg">
+                            <img src="../../assets/img/instagram.svg">
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+
+        </div>
+
+
     </div>
 </block-ui>

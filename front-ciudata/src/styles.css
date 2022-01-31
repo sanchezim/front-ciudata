@@ -1,14 +1,414 @@
-/* You can add global styles to this file, and also import other style files */
 
-.encabezado {
-    color: #fff;
-    font-family: 'AccordAlt';
-    font-weight: 800;
+
+:root {
+  --font-color: #000000 ;
+  --fill-font-color: #FFF;
+  --font-family-sans-serif:  "Helvetica", Arial, sans-serif;
+  --white:  #FFFFFF;
+  --black: #000000;
+  --warm-gray:#707070;
+  --greenish: #0f8481;
+  --seafoam-blue: #4ed1ce;
+  --warm-gray-7:rgb(26 26 26 / 70%);
+  --font-base:normal;
+  --font-weight-light:300;
+  --font-weight-normal:400;
+  --font-weight-semi:500;
+  --font-weight-bold:600;
+  --font-weight-extra-bold:800;
+
+  --line-height-xs:17px;
+  --line-height-small:21px;
+  --line-height-general:23px;
+  --line-height:26px;
+  --line-height-lg:41px;
+
+  /* margin */
+  --margin-large-vertical:30px;
+  --margin-base-vertical:15px;
+  --margin-general-bottom: 0 0 10px 0;
+
+  /* font */
+  --font-size-h1:35px;
+  --font-size-h2:28px;
+  --font-size-h3:20px;
+  --font-size-h4:18px;
+  --font-size-h5:16px;
+  --font-size-h6:13px;
+  --font-paragraph:15px;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.label_login {
+	font-family: 'accordalt-lightlight';
+	font-size: var(--font-size-h5);
+	font-weight: var(--font-weight-light);
+	font-stretch: normal;
+	font-style: normal;
+	line-height: var(--line-height-general);
+	letter-spacing: normal;
+	color: var(--white);
   }
   
-  .texto {
-    color: #fff;
-    font-family: 'AccordAlt';
+  .input_login{
+  height: 35px;
+  border-radius: 25px;
+  border: solid 1px var(--warm-grey);
+  background-color: var(--white);
   }
   
-    
+  .fa-key{
+  color: var(--seafoam-blue);
+  width: 19px;
+  height: 19px;
+  font-size: 19px;
+  padding: 0px;
+  cursor: pointer;
+  margin-right: 10px;
+  }
+
+
+.btn{
+  width: 100%;
+  height: 38px;
+  margin: 0 auto;
+  padding: 8px 25px;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: var(--greenish);
+  font-family: 'accordalt-mediummedium';
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-semi);
+  font-stretch: var(--font-base);
+  font-style: var(--font-base);
+  line-height: 1.15;
+  letter-spacing: var(--font-base);
+  text-align: center;
+  color: var(--white);
+}
+
+.btn:hover{
+  background-color: var(--greenish);
+ transition: all 0.3s ease;
+} 
+
+.btn-secondary{
+  background-color: var(--white);
+  border:1px solid var(--greenish);
+  color:var(--greenish);
+  max-width:250px;
+}
+
+.dropdown{
+  float: right;
+  position: absolute;
+  max-width: 100px;
+  right: 10px;
+  top:10px;
+}
+
+.dropdown-menu{
+  left: 12px;
+  max-width: 107px;
+  min-width: 66px;
+}
+
+footer{
+  position: absolute;
+  bottom: 0px;
+  height: 100px;
+  padding: 15px 50px;
+  width:100%;
+  color: var(--seafoam-blue);
+  font-size: var(--font-size-h5);
+  font-family: 'helveticaregular';
+  left:0px;
+}
+
+footer hr{
+  background: var(--seafoam-blue);
+  height: 2px !important;
+  margin:10px auto;
+}
+
+footer img{
+  width: 18px;
+  height: 18px;
+  margin:0px 7px 0px 0px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.mobile{
+  display:none;
+}
+.desk{
+  display: block;
+}
+
+.dark_container{
+  background-color: var(--black);
+  height: 100vh;
+}
+
+.logo{
+  width: 100%;
+  height: auto;
+  margin: 30px auto;
+  padding: 0;
+  text-align: center;
+}
+
+.logo img{
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  max-width: 266px;
+}
+
+.m-lg-b{
+ margin: 0 0 60px 0;
+} 
+
+.m-lg-t{
+  margin: 60px 0px 0px 0px;
+ } 
+
+.m-b-b{
+  margin: 0 0 20px 0;
+}
+
+a{
+  font-family: 'helveticaregular';
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-base);
+  font-stretch: var(--font-base);
+  font-style: var(--font-base);
+  line-height: var(--line-height-xs);
+  letter-spacing: var(--font-base);
+  color: var(--seafoam-blue) !important;
+  cursor: pointer;
+}
+
+.po_r{
+  position: relative;
+}
+
+.p-l-50{
+  padding-left: 50px;
+}
+
+.p-redes{
+  padding: 0px 50px 0px 125px;
+}
+
+.white{
+  color:var(--white);
+}
+
+.modal{
+  background: var(--warm-gray-7);
+}
+
+.modal-dialog{
+  margin-top:15%;
+  max-width: 600px;
+}
+
+.modal-content{
+  border-radius: 20px;
+  background: var(--white);
+  border: none;
+  min-height: 272px;
+}
+
+.modal-header{
+  height: 45px;
+  border: none;
+  position: relative;
+}
+
+.modal-header .close{
+  border-radius: 5px;
+  border: 2px solid var(--greenish);
+  background: var(--white);
+  color: var(--greenish);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semi);
+  height: 25px;
+  padding: 2px;
+  width: 25px;
+  text-align: center;
+  cursor: pointer;
+  float: right;
+  position: absolute;
+  right: 20px;
+  top:10px;
+}
+
+.modal-body .fas{
+ width: 40px;
+  height: 40px;
+  font-size: var(--font-size-h1);
+  margin-bottom: 20px;
+  color: var(--greenish);
+}
+
+.modal-body p{
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-light);
+  font-stretch: var( --font-base);
+  font-style: var( --font-base);
+  line-height: var(--line-height-general);
+  letter-spacing: var( --font-base);
+  text-align: center;
+  color: var(--black);
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.modal-footer{
+   border:none;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, a, .td-name, td, button, input, select, textarea{
+  font-family: var(--font-family-sans-serif);
+  font-weight: var(--font-weight-light);
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4{
+  margin: var(--margin-large-vertical 0 0);
+}
+
+h1, .h1 {
+  font-size: var(--font-size-h1);
+}
+h2, .h2{
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-extra-bold);
+  font-family: 'accordalt-lightlight';
+  text-transform: uppercase;
+  line-height: 1.17em;
+  letter-spacing: var(--font-base);
+  font-stretch: var(--font-base);
+  font-style: var(--font-base);
+}
+h3, .h3{
+  font-size: var(--font-size-h3);
+  line-height: 1.4;
+  margin: 20px 0 0px;
+}
+h4, .h4{
+  font-size: var(--font-size-h4);
+  line-height: 1.2em;
+}
+h5, .h5 {
+  font-size: var(--font-size-h5);
+  line-height: 1.4em;
+}
+h6, .h6{
+  font-size: var(--font-size-h6);
+  font-weight: var(--font-weight-bold);
+  font-family: 'accordalt-extraboldextrabold';
+  text-transform: uppercase;
+  line-height: 1.5em;
+}
+p{
+  font-size: var(--font-paragraph);
+  line-height: var(--line-height-xs);
+  margin-bottom: 5px;
+  font-family: 'accordalt-lightlight';
+}
+
+@media (max-width: 912px) {
+  footer{
+      height: auto;
+  }
+  a{
+      font-size: var(--font-size-h6); 
+  }
+}
+
+@media (max-width: 780px) {
+  .mobile{
+      display:block;
+  }
+  .desk{
+      display: none;
+  }
+}
+
+@media (max-width: 540px) {
+  footer{
+      padding: 10px;
+      margin-top: 60px;
+      height: auto;
+  }
+  .modal-dialog {
+      width: 80%;
+      margin: 40% auto 0 auto;
+  }
+  .logo{
+      margin: 60px auto 30px auto;  
+  }
+}
+
+@media (max-width: 280px) {
+  footer{
+      padding: 5px;
+      margin-top: 29px;
+      font-size: var(--font-size-h6);
+
+  }
+  a{
+      font-size: var(--font-size-h6); 
+  }
+
+  .modal-body p{
+      font-size: var(--font-size-h5);
+      line-height:var(--line-height-general);
+  }
+}

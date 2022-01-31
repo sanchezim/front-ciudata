@@ -20,6 +20,8 @@ export class RecuperaContrasenaComponent implements OnInit {
     password: ''
   }
   envioRecuperacion = false;
+  toggleFlag = false;
+  es = true;
 
   @BlockUI() blockUI!: NgBlockUI;
   constructor(@Inject(DOCUMENT) private document: Document,
@@ -57,9 +59,16 @@ export class RecuperaContrasenaComponent implements OnInit {
 
   public cambiarLenguaje(lang: string) {
     this.activeLang = lang;
+    if (this.activeLang === 'en') {
+      this.es = false;
+    } else {
+      this.es = true;
+    }
     this.translate.use(lang);
   }
 
   get f() { return this.recuperaForm.controls; }
+
+  showDropdown() { this.toggleFlag = !this.toggleFlag; }
 
 }
